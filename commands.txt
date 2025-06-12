@@ -1,0 +1,11 @@
+kafka-topics --create --topic sales-usd --bootstrap-server localhost:9092
+kafka-topics --create --topic sales-euros --bootstrap-server localhost:9092
+kafka-topics --create --topic sales-inr --bootstrap-server localhost:9092
+
+kafka-topics --delete --topic <topicname> --bootstrap-server localhost:9092
+
+kafka-topics --list --bootstrap-server localhost:9092
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic sales-usd --from-beginning
+
+./bin/flink run   --target remote   --jobmanager localhost:8081   --python /home/maheboob/Downloads/Kafka-Flink-Demo-master/sales_processor.py
